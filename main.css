@@ -95,6 +95,10 @@ body {
 }
 
 .note-names__note {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 2rem;
   margin-bottom: 2rem;
   height: 6rem;
