@@ -11,7 +11,6 @@ const feedbackDOM = document.querySelector(".feedback");
 const correctSound = new Audio("correct.mp3");
 const incorrectSound = new Audio("incorrect.mp3");
 const names = document.querySelectorAll(".note-names__note");
-const randomNoteBtn = document.querySelector(".btn");
 
 /////////////////////////////////////
 // Drawing hamsha on canvas
@@ -187,14 +186,6 @@ const getRandomNumberBetween = function (min, max) {
 
 getRandomNumberBetween(0, rangeArr.length - 1);
 console.log(randomNumArray, randomNote);
-
-randomNoteBtn.addEventListener("click", function () {
-  getRandomNumberBetween(0, 20);
-  console.log(randomNumArray);
-  c.clearRect(0, 0, canvas.width, canvas.height);
-  drawHamsha();
-  noteArray[randomNote - 1].drawNote();
-});
 
 //////////////////////////////////////////
 ///////////////////////////////////////////////////////
