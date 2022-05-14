@@ -48,15 +48,15 @@ const drawHamsha = function () {
   c.lineTo(canvas.width, 0.5 * canvas.height);
   c.stroke();
 
-  make_base();
+  make_clef();
   c.closePath();
 
-  function make_base() {
-    base_image = new Image();
-    base_image.src = "img/g-clef.png";
-    base_image.onload = function () {
+  function make_clef() {
+    clef_image = new Image();
+    clef_image.src = "img/g-clef.png";
+    clef_image.onload = function () {
       c.drawImage(
-        base_image,
+        clef_image,
         -20,
         0.45 * hamshaHeight,
         160,
@@ -205,34 +205,31 @@ const updateStats = function () {
 
 /////////////////////////////////////////////////////
 // Feedback functions
+const generateCorrectImg = function () {
+  correctImg = new Image();
+  correctImg.src = "img/correct.png";
+  correctImg.onload = function () {
+    c.drawImage(correctImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+  };
+};
+
+const generateWrongImg = function () {
+  wrongImg = new Image();
+  wrongImg.src = "img/wrong.png";
+  wrongImg.onload = function () {
+    c.drawImage(wrongImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+  };
+};
 
 const feedbackCorrect = function () {
-  // feedbackDOM.src = "img/check.png";
   correctSound.play();
-
-  // const cardCorrect = document.querySelector(`.card${randomNote % 7}`);
-  // cardCorrect.classList.add("card-correct");
-  // feedbackDOM.classList.add("animate-correct");
-  // setTimeout(() => {
-  //   cardCorrect.classList.remove("card-correct");
-  //   feedbackDOM.classList.remove("animate-correct");
-  //   feedbackDOM.src = "img/feedback-blank.png";
-  // }, 500);
+  generateCorrectImg();
 };
 
 const feedbackWrong = function () {
-  // feedbackDOM.src = "img/remove.png";
   incorrectSound.play();
   window.navigator.vibrate(500);
-
-  // const cardMistake = document.querySelector(`.card${randomNote % 7}`);
-  // cardMistake.classList.add("card-mistake");
-  // feedbackDOM.classList.add("animate-wrong");
-  // setTimeout(() => {
-  //   cardMistake.classList.remove("card-mistake");
-  //   feedbackDOM.classList.remove("animate-wrong");
-  //   feedbackDOM.src = "img/feedback-blank.png";
-  // }, 500);
+  generateWrongImg();
 };
 
 ////////////////////////////////////////////////////
