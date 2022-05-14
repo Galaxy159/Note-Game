@@ -87,11 +87,21 @@ body {
   margin-bottom: 2rem;
 }
 
-.note-names {
+.note-names__top-row {
+  margin: 0 12.5%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.note-names__bottom-row {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
 }
 
 .note-names__note {
