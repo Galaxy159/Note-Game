@@ -14,6 +14,7 @@ html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 62.5%;
+  font-family: "Secular One", sans-serif;
 }
 
 body {
@@ -94,11 +95,12 @@ body {
 }
 
 .note-names__note {
-  margin-bottom: 5rem;
-  height: 5rem;
-  width: 5rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  height: 6rem;
+  width: 6rem;
   padding: 2rem;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 50%;
 }
 /*# sourceMappingURL=main.css.map */
