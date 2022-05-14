@@ -257,6 +257,16 @@ const wrongAnswer = function () {
   feedbackWrong();
 };
 
+const randomizeNote = function () {
+  getRandomNumberBetween(0, rangeArr.length - 1);
+  c.clearRect(0, 0, canvas.width, canvas.height);
+  drawHamsha();
+  noteArray[randomNote - 1].drawNote();
+};
+window.onload = function () {
+  randomizeNote();
+};
+
 let lockCard = false;
 
 const isMatch = function () {
@@ -271,10 +281,7 @@ const isMatch = function () {
       : wrongAnswer();
     setTimeout(() => {
       updateStats();
-      getRandomNumberBetween(0, rangeArr.length - 1);
-      c.clearRect(0, 0, canvas.width, canvas.height);
-      drawHamsha();
-      noteArray[randomNote - 1].drawNote();
+      randomizeNote();
 
       lockCard = false;
     }, 500);
