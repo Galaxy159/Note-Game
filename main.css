@@ -86,4 +86,20 @@ body {
 .timer {
   margin-bottom: 2rem;
 }
+
+.note-names {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+.note-names__note {
+  margin-bottom: 5rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 50%;
+}
 /*# sourceMappingURL=main.css.map */

@@ -1,4 +1,17 @@
 "use-strict";
+let scorePercentage,
+  randomNote,
+  nameCorrect,
+  rangeFrom = 1,
+  rangeTo = 21,
+  scoreCorrect = 0,
+  totalAnswers = 0;
+
+const feedbackDOM = document.querySelector(".feedback");
+const correctSound = new Audio("correct.mp3");
+const incorrectSound = new Audio("incorrect.mp3");
+const names = document.querySelectorAll(".note-names__note");
+const randomNoteBtn = document.querySelector(".btn");
 
 /////////////////////////////////////
 // Drawing hamsha on canvas
@@ -155,8 +168,6 @@ console.log(noteArray);
 
 noteArray[9].drawNote();
 
-const randomNoteBtn = document.querySelector(".btn");
-let randomNote;
 const rangeArr = [
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 ];
@@ -172,7 +183,7 @@ const getRandomNumberBetween = function (min, max) {
     randomNumArray.pop();
     randomNote = getRandomNumberBetween(0, rangeArr.length - 1);
   } else {
-    return (randomNote = randomNumArray[randomNumArray.length - 1]);
+    return (randomNote = randomNumArray[randomNumArray.length - 1] + 1);
   }
 };
 
@@ -184,5 +195,93 @@ randomNoteBtn.addEventListener("click", function () {
   console.log(randomNumArray);
   c.clearRect(0, 0, canvas.width, canvas.height);
   drawHamsha();
-  noteArray[randomNote].drawNote();
+  noteArray[randomNote - 1].drawNote();
 });
+
+//////////////////////////////////////////
+///////////////////////////////////////////////////////
+// Stats functions
+const scorePerc = function () {
+  scorePercentage = ((scoreCorrect / totalAnswers) * 100).toFixed(2);
+};
+
+const updateStats = function () {
+  totalAnswers += 1;
+  scorePerc();
+  document.querySelector(".stats__tries").textContent =
+    "מספר מהלכים: " + totalAnswers;
+  document.querySelector(".stats__success-percentage").textContent =
+    "אחוזי הצלחה: " + scorePercentage;
+};
+
+/////////////////////////////////////////////////////
+// Feedback functions
+
+const feedbackCorrect = function () {
+  // feedbackDOM.src = "img/check.png";
+  correctSound.play();
+
+  // const cardCorrect = document.querySelector(`.card${randomNote % 7}`);
+  // cardCorrect.classList.add("card-correct");
+  // feedbackDOM.classList.add("animate-correct");
+  // setTimeout(() => {
+  //   cardCorrect.classList.remove("card-correct");
+  //   feedbackDOM.classList.remove("animate-correct");
+  //   feedbackDOM.src = "img/feedback-blank.png";
+  // }, 500);
+};
+
+const feedbackWrong = function () {
+  // feedbackDOM.src = "img/remove.png";
+  incorrectSound.play();
+  window.navigator.vibrate(500);
+
+  // const cardMistake = document.querySelector(`.card${randomNote % 7}`);
+  // cardMistake.classList.add("card-mistake");
+  // feedbackDOM.classList.add("animate-wrong");
+  // setTimeout(() => {
+  //   cardMistake.classList.remove("card-mistake");
+  //   feedbackDOM.classList.remove("animate-wrong");
+  //   feedbackDOM.src = "img/feedback-blank.png";
+  // }, 500);
+};
+
+////////////////////////////////////////////////////
+// Check match functions
+const correctAnswer = function () {
+  scoreCorrect += 1;
+  feedbackCorrect();
+};
+
+const wrongAnswer = function () {
+  feedbackWrong();
+};
+
+let lockCard = false;
+
+const isMatch = function () {
+  if (lockCard) {
+    return;
+  } else if (rangeArr.length < 2) {
+    window.alert("בחר תווים נוספים כדי לשחק");
+  } else {
+    lockCard = true;
+    parseInt(this.dataset.name) % 7 === randomNote % 7
+      ? correctAnswer()
+      : wrongAnswer();
+    setTimeout(() => {
+      updateStats();
+      getRandomNumberBetween(0, rangeArr.length - 1);
+      c.clearRect(0, 0, canvas.width, canvas.height);
+      drawHamsha();
+      noteArray[randomNote - 1].drawNote();
+
+      lockCard = false;
+    }, 500);
+  }
+};
+
+///////////////////////////////////////////////////
+// Handlers
+
+names.forEach((name) => name.addEventListener("click", isMatch));
