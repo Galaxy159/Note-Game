@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="main.css" rel="stylesheet" />
+    <title>זהה את התו</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__settings">הגדרות</li>
+          <li class="nav__language">שפה</li>
+        </ul>
+      </nav>
+
+      <div class="stats">
+        <div class="stats__success-percentage">אחוזי הצלחה:</div>
+        <div class="stats__tries">5 מתוך 10 תשובות נכונות</div>
+      </div>
+
+      <div class="timer">05:00</div>
+
+      <canvas class="canvas"></canvas>
+
+      <section class="note-name">
+        <div class="note-name__do">דו</div>
+        <div class="note-name__re">רה</div>
+        <div class="note-name__mi">מי</div>
+        <div class="note-name__fa">פה</div>
+        <div class="note-name__sol">סול</div>
+        <div class="note-name__la">לה</div>
+        <div class="note-name__si">סי</div>
+        <button class="btn">random-note</button>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="canvas.js"></script>
+  </body>
+</html>
