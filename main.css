@@ -122,4 +122,9 @@ body {
   border: 2px solid black;
   border-radius: 50%;
 }
+
+.note-names__note span {
+  -webkit-transform: translateY(-20%);
+          transform: translateY(-20%);
+}
 /*# sourceMappingURL=main.css.map */
