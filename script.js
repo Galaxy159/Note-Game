@@ -90,8 +90,8 @@ const ellipse = function (height) {
 const kavEzer = function (kavEzerHeight) {
   c.beginPath();
   c.lineWidth = 2;
-  c.moveTo(0.4 * canvas.width, kavEzerHeight);
-  c.lineTo(0.6 * canvas.width, kavEzerHeight);
+  c.moveTo(0.5 * canvas.width - 46, kavEzerHeight);
+  c.lineTo(0.5 * canvas.width + 46, kavEzerHeight);
   c.stroke();
   c.closePath();
 };
