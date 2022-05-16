@@ -154,6 +154,7 @@ cRange = canvasRange.getContext("2d");
 canvasRange.width = window.innerWidth;
 canvasRange.height = 0.5 * window.innerHeight;
 const hamshaHeightRange = 0.22 * canvasRange.height;
+const noteSpacing = (canvasRange.width - 80) / 6;
 
 const drawHamshaRange = function (c, canvas) {
   c.beginPath();
@@ -214,31 +215,91 @@ const rangeSelect = () => {
     kavEzer(0, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 75);
     kavEzer(0, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 75);
 
-    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 10, 120);
-    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 120);
-    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 120);
+    kavEzer(
+      noteSpacing,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 10,
+      75 + noteSpacing
+    );
+    kavEzer(
+      noteSpacing,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 8,
+      75 + noteSpacing
+    );
+    kavEzer(
+      noteSpacing,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 6,
+      75 + noteSpacing
+    );
 
-    kavEzer(90, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 165);
-    kavEzer(90, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 165);
+    kavEzer(
+      noteSpacing * 2,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 8,
+      noteSpacing * 2 + 75
+    );
+    kavEzer(
+      noteSpacing * 2,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 6,
+      noteSpacing * 2 + 75
+    );
 
-    kavEzer(135, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 210);
-    kavEzer(135, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 210);
+    kavEzer(
+      noteSpacing * 3,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 8,
+      noteSpacing * 3 + 75
+    );
+    kavEzer(
+      noteSpacing * 3,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 6,
+      noteSpacing * 3 + 75
+    );
 
-    kavEzer(180, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 255);
+    kavEzer(
+      noteSpacing * 4,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 6,
+      noteSpacing * 4 + 75
+    );
 
-    kavEzer(225, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 300);
+    kavEzer(
+      noteSpacing * 5,
+      canvasRange.height / 2 + (hamshaHeightRange / 8) * 6,
+      noteSpacing * 5 + 75
+    );
 
     // Kavei ezer above:
 
-    kavEzer(135, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 210);
+    kavEzer(
+      noteSpacing * 3,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 6,
+      noteSpacing * 3 + 75
+    );
 
-    kavEzer(180, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 255);
+    kavEzer(
+      noteSpacing * 4,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 6,
+      noteSpacing * 4 + 75
+    );
 
-    kavEzer(225, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 300);
-    kavEzer(225, canvasRange.height / 2 - (hamshaHeightRange / 8) * 8, 300);
+    kavEzer(
+      noteSpacing * 5,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 6,
+      noteSpacing * 5 + 75
+    );
+    kavEzer(
+      noteSpacing * 5,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 8,
+      noteSpacing * 5 + 75
+    );
 
-    kavEzer(270, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 345);
-    kavEzer(270, canvasRange.height / 2 - (hamshaHeightRange / 8) * 8, 345);
+    kavEzer(
+      noteSpacing * 6,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 6,
+      noteSpacing * 6 + 75
+    );
+    kavEzer(
+      noteSpacing * 6,
+      canvasRange.height / 2 - (hamshaHeightRange / 8) * 8,
+      noteSpacing * 6 + 75
+    );
   };
 
   hamsha();
@@ -291,8 +352,8 @@ const rangeSelect = () => {
   let circlesArr;
   const makeCircles = (n) => {
     circlesArr = new Array(n);
-    const startX = 15;
-    let x = 45;
+    const startX = 60;
+    let x = 0;
     let y = 0.5 * canvasRange.height + (hamshaHeightRange / 8) * 11;
     let z = 0;
     for (let i = 0; i < n; i++) {
@@ -304,7 +365,7 @@ const rangeSelect = () => {
         z,
         false
       );
-      x === 315 ? (x = 45) : (x += 45);
+      x === noteSpacing * 6 ? (x = 0) : (x += noteSpacing);
       y -= hamshaHeightRange / 8;
       z += 1;
     }
