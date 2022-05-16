@@ -31,6 +31,12 @@ body {
   margin-bottom: 2rem;
 }
 
+.rangeHeader {
+  margin-top: 4rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
