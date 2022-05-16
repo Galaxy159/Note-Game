@@ -2,8 +2,6 @@
 let scorePercentage,
   randomNote,
   nameCorrect,
-  rangeFrom = 1,
-  rangeTo = 21,
   scoreCorrect = 0,
   totalAnswers = 0;
 
@@ -109,7 +107,6 @@ const createNoteHeightArray = function () {
 };
 
 createNoteHeightArray();
-console.log(noteHeightArray);
 
 function Note(height) {
   this.height = height;
@@ -156,8 +153,189 @@ const canvasRange = document.querySelector(".canvas-range");
 cRange = canvasRange.getContext("2d");
 canvasRange.width = window.innerWidth;
 canvasRange.height = 0.5 * window.innerHeight;
+const hamshaHeightRange = 0.22 * canvasRange.height;
 
-drawHamsha(cRange, canvasRange);
+const drawHamshaRange = function (c, canvas) {
+  c.beginPath();
+  c.lineWidth = 1;
+  c.strokeStyle = "black";
+  c.strokeRect(
+    0,
+    0.5 * canvas.height - 0.5 * hamshaHeightRange,
+    canvas.width,
+    hamshaHeightRange
+  );
+
+  c.strokeRect(
+    0,
+    0.5 * canvas.height - 0.25 * hamshaHeightRange,
+    canvas.width,
+    0.5 * hamshaHeightRange
+  );
+
+  c.moveTo(0, 0.5 * canvas.height);
+  c.lineTo(canvas.width, 0.5 * canvas.height);
+  c.stroke();
+
+  make_clef();
+  c.closePath();
+
+  function make_clef() {
+    clef_image = new Image();
+    clef_image.src = "img/g-clef.png";
+    clef_image.onload = function () {
+      c.drawImage(
+        clef_image,
+        -10,
+        1.4 * hamshaHeightRange,
+        60,
+        0.41 * canvas.height
+      );
+    };
+  }
+};
+
+drawHamshaRange(cRange, canvasRange);
+
+const rangeSelect = () => {
+  const hamsha = () => {
+    const kavEzer = (x, y, z) => {
+      cRange.beginPath();
+      cRange.lineWidth = 1;
+      cRange.strokeStyle = "#888";
+      cRange.moveTo(45 + x, y);
+      cRange.lineTo(z, y);
+      cRange.stroke();
+      cRange.closePath();
+    };
+
+    // Kavei ezer below:
+    kavEzer(0, canvasRange.height / 2 + (hamshaHeightRange / 8) * 10, 75);
+    kavEzer(0, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 75);
+    kavEzer(0, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 75);
+
+    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 10, 120);
+    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 120);
+    kavEzer(45, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 120);
+
+    kavEzer(90, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 165);
+    kavEzer(90, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 165);
+
+    kavEzer(135, canvasRange.height / 2 + (hamshaHeightRange / 8) * 8, 210);
+    kavEzer(135, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 210);
+
+    kavEzer(180, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 255);
+
+    kavEzer(225, canvasRange.height / 2 + (hamshaHeightRange / 8) * 6, 300);
+
+    // Kavei ezer above:
+
+    kavEzer(135, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 210);
+
+    kavEzer(180, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 255);
+
+    kavEzer(225, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 300);
+    kavEzer(225, canvasRange.height / 2 - (hamshaHeightRange / 8) * 8, 300);
+
+    kavEzer(270, canvasRange.height / 2 - (hamshaHeightRange / 8) * 6, 345);
+    kavEzer(270, canvasRange.height / 2 - (hamshaHeightRange / 8) * 8, 345);
+  };
+
+  hamsha();
+
+  cRange.beginPath();
+  cRange.strokeStyle = "#000";
+  class Circle {
+    constructor(xpoint, ypoint, radius, color, value, clicked) {
+      this.xpoint = xpoint;
+      this.ypoint = ypoint;
+      this.radius = radius;
+      this.color = color;
+      this.value = value;
+      this.clicked = clicked;
+    }
+    draw(context) {
+      context.beginPath();
+      context.arc(this.xpoint, this.ypoint, this.radius, 0, Math.PI * 2, false);
+      context.fillStyle = this.color;
+      context.fill();
+      context.lineWidth = 1;
+      context.stroke();
+      context.closePath();
+    }
+
+    changeColor(newColor) {
+      this.color = newColor;
+      this.draw(cRange);
+    }
+
+    clickCircle(xmouse, ymouse) {
+      const distance = Math.sqrt(
+        (xmouse - this.xpoint) ** 2 + (ymouse - this.ypoint) ** 2
+      );
+
+      if (distance < this.radius + 13.7 && !this.clicked) {
+        this.changeColor("#33ff33");
+        rangeArr.push(this.value);
+        this.clicked = true;
+        console.log(rangeArr);
+      } else if (distance < this.radius + 13.7 && this.clicked) {
+        this.changeColor("#000");
+        rangeArr.splice(rangeArr.indexOf(this.value), 1);
+        this.clicked = false;
+        console.log(rangeArr);
+      }
+    }
+  }
+
+  let circlesArr;
+  const makeCircles = (n) => {
+    circlesArr = new Array(n);
+    const startX = 15;
+    let x = 45;
+    let y = 0.5 * canvasRange.height + (hamshaHeightRange / 8) * 11;
+    let z = 0;
+    for (let i = 0; i < n; i++) {
+      circlesArr[i] = new Circle(
+        x + startX,
+        y,
+        hamshaHeightRange / 8,
+        "#000",
+        z,
+        false
+      );
+      x === 315 ? (x = 45) : (x += 45);
+      y -= hamshaHeightRange / 8;
+      z += 1;
+    }
+  };
+  const defaultRange = () => {
+    circlesArr[9].color = "#33ff33";
+    circlesArr[10].color = "#33ff33";
+    circlesArr[11].color = "#33ff33";
+    circlesArr[9].clicked = true;
+    circlesArr[10].clicked = true;
+    circlesArr[11].clicked = true;
+  };
+  makeCircles(21);
+  defaultRange();
+
+  const drawCircles = () => {
+    for (let i = 0; i < circlesArr.length; i++) {
+      circlesArr[i].draw(cRange);
+    }
+  };
+  drawCircles();
+
+  canvasRange.addEventListener("click", (event) => {
+    const rect = canvasRange.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    circlesArr.forEach((circle) => circle.clickCircle(x, y));
+  });
+};
+
+rangeSelect();
 
 /////////////////////////////////////////////////////
 // Settings dropdown menu
@@ -181,11 +359,8 @@ const createNoteArray = function () {
 };
 createNoteArray();
 
-console.log(noteArray);
+const rangeArr = [9, 10, 11];
 
-const rangeArr = [
-  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-];
 const randomNumArray = [];
 
 const getRandomNumberBetween = function (min, max) {
@@ -196,14 +371,11 @@ const getRandomNumberBetween = function (min, max) {
     randomNumArray[randomNumArray.length - 2]
   ) {
     randomNumArray.pop();
-    randomNote = getRandomNumberBetween(0, rangeArr.length - 1);
+    getRandomNumberBetween(0, rangeArr.length - 1);
   } else {
     return (randomNote = randomNumArray[randomNumArray.length - 1] + 1);
   }
 };
-
-getRandomNumberBetween(0, rangeArr.length - 1);
-console.log(randomNumArray, randomNote);
 
 //////////////////////////////////////////
 ///////////////////////////////////////////////////////
@@ -261,12 +433,12 @@ const wrongAnswer = function () {
   feedbackWrong();
 };
 
-const randomizeNote = function () {
+function randomizeNote() {
   getRandomNumberBetween(0, rangeArr.length - 1);
   c.clearRect(0, 0, canvas.width, canvas.height);
   drawHamsha(c, canvas);
   noteArray[randomNote - 1].drawNote();
-};
+}
 window.onload = function () {
   randomizeNote();
 };
@@ -283,8 +455,10 @@ const isMatch = function () {
     parseInt(this.dataset.name) % 7 === randomNote % 7
       ? correctAnswer()
       : wrongAnswer();
+
     setTimeout(() => {
       updateStats();
+
       randomizeNote();
 
       lockCard = false;
