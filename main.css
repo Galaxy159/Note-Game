@@ -57,6 +57,10 @@ body {
   margin-bottom: 2rem;
 }
 
+.note-names {
+  margin-top: 4rem;
+}
+
 .note-names__top-row {
   margin: 0 12.5%;
   display: -ms-grid;
