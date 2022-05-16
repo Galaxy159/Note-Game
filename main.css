@@ -41,40 +41,6 @@ body {
           flex-direction: column;
 }
 
-.nav {
-  margin-bottom: 2rem;
-}
-
-.nav__list {
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 5vh;
-}
-
-.nav li {
-  -webkit-box-flex: 0.5;
-      -ms-flex: 0.5;
-          flex: 0.5;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.nav li:not(:last-child) {
-  border-left: 1px solid black;
-}
-
 .stats {
   margin-bottom: 2rem;
   display: -webkit-box;
@@ -126,5 +92,31 @@ body {
 .note-names__note span {
   -webkit-transform: translateY(-20%);
           transform: translateY(-20%);
+}
+
+.settings__dropdown--btn {
+  background-color: #3498db;
+  color: white;
+  padding: 0 2rem;
+  height: 5vh;
+  border: none;
+  cursor: pointer;
+}
+
+.settings__dropdown--btn--btn:hover, .settings__dropdown--btn--byn:focus {
+  background-color: #2980b9;
+}
+
+.settings__dropdown--content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100vw;
+  height: 95vh;
+  z-index: 1;
+}
+
+.show {
+  display: block;
 }
 /*# sourceMappingURL=main.css.map */

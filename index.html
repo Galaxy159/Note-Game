@@ -16,12 +16,16 @@
   </head>
   <body>
     <div class="container">
-      <nav class="nav">
-        <ul class="nav__list">
-          <li class="nav__settings">הגדרות</li>
-          <li class="nav__language">שפה</li>
-        </ul>
-      </nav>
+      <section class="settings">
+        <div class="settings__dropdown">
+          <button onclick="dropdownBtn()" class="settings__dropdown--btn">
+            הגדרות
+          </button>
+          <div id="myDropdown" class="settings__dropdown--content">
+            <canvas class="canvas-range"></canvas>
+          </div>
+        </div>
+      </section>
 
       <div class="stats">
         <div class="stats__success-percentage">אחוזי הצלחה:</div>
@@ -30,7 +34,7 @@
 
       <div class="timer">05:00</div>
 
-      <canvas class="canvas"></canvas>
+      <canvas class="canvas-game"></canvas>
 
       <section class="note-names">
         <div class="note-names__top-row">

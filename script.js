@@ -15,18 +15,15 @@ const names = document.querySelectorAll(".note-names__note");
 /////////////////////////////////////
 // Drawing hamsha on canvas
 
-const canvas = document.querySelector("canvas");
+const canvas = document.querySelector(".canvas-game");
 
 const hamshaHeight = 0.7 * canvas.height;
-
 c = canvas.getContext("2d");
 
-console.log(canvas.height);
 canvas.width = window.innerWidth;
-console.log(canvas.width);
 canvas.height = 0.5 * window.innerHeight;
 
-const drawHamsha = function () {
+const drawHamsha = function (c, canvas) {
   c.beginPath();
   c.lineWidth = 1;
   c.strokeStyle = "black";
@@ -58,15 +55,15 @@ const drawHamsha = function () {
       c.drawImage(
         clef_image,
         -20,
-        0.45 * hamshaHeight,
-        160,
-        0.72 * canvas.height
+        0.58 * hamshaHeight,
+        100,
+        0.65 * canvas.height
       );
     };
   }
 };
 
-drawHamsha();
+drawHamsha(c, canvas);
 
 /////////////////////////////////////////////////
 // CREATING NOTE HEIGHT ARRAY AND UI
@@ -76,7 +73,7 @@ drawHamsha();
 const ellipse = function (height) {
   c.beginPath();
   c.ellipse(
-    0.6 * canvas.width,
+    0.5 * canvas.width,
     noteHeightArray[height],
     hamshaHeight / 8,
     23,
@@ -93,8 +90,8 @@ const ellipse = function (height) {
 const kavEzer = function (kavEzerHeight) {
   c.beginPath();
   c.lineWidth = 2;
-  c.moveTo(0.5 * canvas.width, kavEzerHeight);
-  c.lineTo(0.7 * canvas.width, kavEzerHeight);
+  c.moveTo(0.4 * canvas.width, kavEzerHeight);
+  c.lineTo(0.6 * canvas.width, kavEzerHeight);
   c.stroke();
   c.closePath();
 };
@@ -150,6 +147,27 @@ function Note(height) {
       kavEzer(noteHeightArray[this.height - 3]);
     }
   };
+}
+
+//////////////////////////////////////////////////
+// Canvas range settings
+
+const canvasRange = document.querySelector(".canvas-range");
+cRange = canvasRange.getContext("2d");
+canvasRange.width = window.innerWidth;
+canvasRange.height = 0.5 * window.innerHeight;
+
+drawHamsha(cRange, canvasRange);
+
+/////////////////////////////////////////////////////
+// Settings dropdown menu
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+
+const dropdownContentID = document.getElementById("myDropdown");
+function dropdownBtn() {
+  dropdownContentID.classList.toggle("show");
 }
 
 // Creating note array
@@ -246,7 +264,7 @@ const wrongAnswer = function () {
 const randomizeNote = function () {
   getRandomNumberBetween(0, rangeArr.length - 1);
   c.clearRect(0, 0, canvas.width, canvas.height);
-  drawHamsha();
+  drawHamsha(c, canvas);
   noteArray[randomNote - 1].drawNote();
 };
 window.onload = function () {
