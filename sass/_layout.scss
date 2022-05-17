@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings {
+}
+
+.stats {
+  margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__success-percentage {
+  }
+
+  &__tries {
+  }
+}
+
+.timer {
+  margin-bottom: 2rem;
+}
+
+.note-names {
+  margin-top: 4rem;
+  &__top-row {
+    margin: 0 12.5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  &__bottom-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
+
+  &__note {
+    display: grid;
+    justify-content: center;
+
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    height: 6rem;
+    width: 6rem;
+    padding: 2rem;
+    border: 2px solid black;
+    border-radius: 50%;
+
+    & span {
+      transform: translateY(-20%);
+    }
+  }
+}

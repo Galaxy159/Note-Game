@@ -1,0 +1,40 @@
+.settings {
+  &__dropdown {
+    &--btn {
+      background-color: #3498db;
+      color: white;
+      padding: 0 2rem;
+      height: 5vh;
+      border: none;
+      cursor: pointer;
+
+      &--btn:hover,
+      &--byn:focus {
+        background-color: #2980b9;
+      }
+    }
+
+    &--content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      width: 100vw;
+      height: 95vh;
+      z-index: 1;
+    }
+  }
+}
+
+.show {
+  display: block;
+}
+
+.rangeHeader {
+  margin-top: 4rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.canvas-range {
+  // border: 1px solid black;
+}
