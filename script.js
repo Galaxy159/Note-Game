@@ -567,6 +567,7 @@ const startTimer = function () {
 const init = function () {
   scoreCorrect = 0;
   totalAnswers = -1;
+  timeLeft = 0;
   randomizeNote();
   updateStats();
 };
