@@ -39,10 +39,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
 .stats {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+  font-size: 1.6rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,11 +57,7 @@ body {
 }
 
 .timer {
-  margin-bottom: 2rem;
-}
-
-.note-names {
-  margin-top: 4rem;
+  font-size: 4rem;
 }
 
 .note-names__top-row {
