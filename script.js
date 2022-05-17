@@ -537,6 +537,7 @@ const timerUI = function () {
 };
 
 const gameTimer = function () {
+  timerUI();
   gameInterval = setInterval(function () {
     if (timeLeft <= 0) {
       clearInterval(gameInterval);
