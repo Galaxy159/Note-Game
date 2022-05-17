@@ -25,6 +25,19 @@
           <div id="myDropdown" class="settings__dropdown--content">
             <p class="rangeHeader">בחר תווים לתרגול:</p>
             <canvas class="canvas-range"></canvas>
+            <label for="timerSelect" class="timer-select__label"
+              >הגבלת זמן:</label
+            >
+            <select name="times" id="timerSelect" class="timer-select">
+              <option value="0">ללא</option>
+              <option value="1">דקה</option>
+              <option value="2">2 דקות</option>
+              <option value="3">3 דקות</option>
+              <option value="4">4 דקות</option>
+              <option value="5">5 דקות</option>
+            </select>
+
+            <button class="btn-restart">התחל לשחק</button>
           </div>
         </div>
       </section>
@@ -34,7 +47,7 @@
         <div class="stats__tries">מספר מהלכים:</div>
       </div>
 
-      <div class="timer">05:00</div>
+      <div class="timer">00:00</div>
 
       <canvas class="canvas-game"></canvas>
 

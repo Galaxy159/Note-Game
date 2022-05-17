@@ -9,6 +9,9 @@ const feedbackDOM = document.querySelector(".feedback");
 const correctSound = new Audio("correct.mp3");
 const incorrectSound = new Audio("incorrect.mp3");
 const names = document.querySelectorAll(".note-names__note");
+const btnRestart = document.querySelector(".btn-restart");
+const timerSelect = document.querySelector(".timer-select");
+const timer = document.querySelector(".timer");
 
 /////////////////////////////////////
 // Drawing hamsha on canvas
@@ -339,12 +342,10 @@ const rangeSelect = () => {
         this.changeColor("#33ff33");
         rangeArr.push(this.value);
         this.clicked = true;
-        console.log(rangeArr);
       } else if (distance < this.radius + 13.7 && this.clicked) {
         this.changeColor("#000");
         rangeArr.splice(rangeArr.indexOf(this.value), 1);
         this.clicked = false;
-        console.log(rangeArr);
       }
     }
   }
@@ -500,9 +501,6 @@ function randomizeNote() {
   drawHamsha(c, canvas);
   noteArray[randomNote - 1].drawNote();
 }
-window.onload = function () {
-  randomizeNote();
-};
 
 let lockCard = false;
 
@@ -517,17 +515,69 @@ const isMatch = function () {
       ? correctAnswer()
       : wrongAnswer();
 
+    updateStats();
     setTimeout(() => {
-      updateStats();
-
       randomizeNote();
-
       lockCard = false;
     }, 500);
   }
 };
 
+//////////////////////////////////////////////////
+// TIMER
+let timeLeft = 0;
+let gameInterval;
+
+const timerUI = function () {
+  timer.textContent =
+    (timeLeft >= 60 ? "0" + parseInt(timeLeft / 60) : "00").toString() +
+    ":" +
+    (timeLeft % 60 >= 10 ? timeLeft % 60 : "0" + (timeLeft % 60)).toString();
+  timeLeft -= 1;
+};
+
+const gameTimer = function () {
+  gameInterval = setInterval(function () {
+    if (timeLeft <= 0) {
+      clearInterval(gameInterval);
+      window.alert(
+        `מזל טוב!` +
+          "\n" +
+          `תשובות נכונות: ${scoreCorrect}` +
+          "\n" +
+          `תשובות שגויות: ${totalAnswers - scoreCorrect}` +
+          "\n" +
+          `אחוז הצלחה: ${scorePercentage}`
+      );
+      init();
+    }
+    timerUI();
+  }, 1000);
+};
+
+const startTimer = function () {
+  clearInterval(gameInterval);
+  timeLeft = timerSelect.value * 60;
+  gameTimer();
+};
+
+//////////////////////////////////////////////////
+// init function
+const init = function () {
+  scoreCorrect = 0;
+  totalAnswers = -1;
+  randomizeNote();
+  updateStats();
+};
+init();
+
 ///////////////////////////////////////////////////
 // Handlers
 
 names.forEach((name) => name.addEventListener("click", isMatch));
+
+btnRestart.addEventListener("click", function () {
+  init();
+  dropdownBtn();
+  startTimer();
+});
