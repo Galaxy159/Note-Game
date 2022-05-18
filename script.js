@@ -479,6 +479,7 @@ const generateWrongImg = function () {
 const feedbackCorrect = function () {
   correctSound.play();
   generateCorrectImg();
+  setTimeout(() => {}, 500);
 };
 
 const feedbackWrong = function () {
@@ -519,8 +520,14 @@ const isMatch = function () {
       : wrongAnswer();
 
     updateStats();
+    randomizeNote();
     setTimeout(() => {
-      randomizeNote();
+      c.clearRect(
+        0.7 * canvas.width,
+        0.04 * canvas.height,
+        0.7 * canvas.width + 100,
+        0.04 * canvas.height + 77
+      );
       lockCard = false;
     }, 500);
   }
