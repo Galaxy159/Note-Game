@@ -137,14 +137,4 @@ body {
   font-size: 2rem;
   letter-spacing: 1px;
 }
-
-.name-mistake {
-  outline: 0.8rem solid #ec443b;
-  outline-offset: -0.8rem;
-}
-
-.name-correct {
-  outline: 0.8rem solid #4bac4c;
-  outline-offset: -0.8rem;
-}
 /*# sourceMappingURL=main.css.map */

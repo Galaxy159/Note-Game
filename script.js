@@ -582,7 +582,12 @@ init();
 names.forEach((name) => name.addEventListener("click", isMatch));
 
 btnRestart.addEventListener("click", function () {
-  init();
-  dropdownBtn();
-  startTimer();
+  if (timerSelect.value > 0) {
+    init();
+    dropdownBtn();
+    startTimer();
+  } else {
+    init();
+    dropdownBtn();
+  }
 });
