@@ -479,24 +479,12 @@ const generateWrongImg = function () {
 const feedbackCorrect = function () {
   correctSound.play();
   generateCorrectImg();
-
-  const nameCorrect = document.querySelector(`.name${randomNote % 7}`);
-  nameCorrect.classList.add("name-correct");
-  setTimeout(() => {
-    nameCorrect.classList.remove("name-correct");
-  }, 500);
 };
 
 const feedbackWrong = function () {
   incorrectSound.play();
   window.navigator.vibrate(500);
   generateWrongImg();
-
-  const nameMistake = document.querySelector(`.name${randomNote % 7}`);
-  nameMistake.classList.add("name-mistake");
-  setTimeout(() => {
-    nameMistake.classList.remove("name-mistake");
-  }, 500);
 };
 
 ////////////////////////////////////////////////////
