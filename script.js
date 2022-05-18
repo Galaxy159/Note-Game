@@ -553,13 +553,13 @@ const gameTimer = function () {
     if (timeLeft < 0) {
       clearInterval(gameInterval);
       window.alert(
-        `כל הכבוד!` +
-          "\n" +
-          `תשובות נכונות: ${scoreCorrect}` +
+        `תשובות נכונות: ${scoreCorrect}` +
           "\n" +
           `תשובות שגויות: ${totalAnswers - scoreCorrect}` +
           "\n" +
-          `אחוז הצלחה: ${scorePercentage}`
+          `אחוז הצלחה: ${scorePercentage}` +
+          "\n" +
+          `כל הכבוד!`
       );
       init();
     }
