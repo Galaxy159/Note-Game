@@ -545,7 +545,7 @@ const gameTimer = function () {
     if (timeLeft < 0) {
       clearInterval(gameInterval);
       window.alert(
-        `מזל טוב!` +
+        `כל הכבוד!` +
           "\n" +
           `תשובות נכונות: ${scoreCorrect}` +
           "\n" +
