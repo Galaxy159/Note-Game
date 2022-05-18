@@ -451,8 +451,11 @@ const updateStats = function () {
   scorePerc();
   document.querySelector(".stats__tries").textContent =
     "מספר מהלכים: " + totalAnswers;
-  document.querySelector(".stats__success-percentage").textContent =
-    "אחוזי הצלחה: " + scorePercentage;
+  document.querySelector(
+    ".stats__success-percentage"
+  ).textContent = `אחוזי הצלחה: ${
+    isNaN(scorePercentage) ? "" : scorePercentage
+  }`;
 };
 
 /////////////////////////////////////////////////////
