@@ -50,6 +50,13 @@
     border: 2px solid black;
     border-radius: 50%;
 
+    box-shadow: 0 1rem 1.6rem rgba(#000, 0.2);
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 0 0.5rem 1rem rgba(#000, 0.2);
+    }
+
     & span {
       transform: translateY(-20%);
     }

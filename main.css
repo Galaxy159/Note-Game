@@ -90,6 +90,15 @@ body {
   padding: 2rem;
   border: 2px solid black;
   border-radius: 50%;
+  -webkit-box-shadow: 0 1rem 1.6rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 1.6rem rgba(0, 0, 0, 0.2);
+}
+
+.note-names__note:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .note-names__note span {
