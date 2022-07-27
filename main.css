@@ -126,6 +126,10 @@ body {
   background-color: #2980b9;
 }
 
+.settings__dropdown--btn-icon {
+  font-size: 3rem;
+}
+
 .settings__dropdown--content {
   display: none;
   position: absolute;
@@ -192,8 +196,12 @@ body {
   cursor: pointer;
 }
 
-.language__dropdown--btn--btn:hover, .language__dropdown--btn--byn:focus {
+.language__dropdown--btn--btn:hover, .language__dropdown--btn--btn:focus {
   background-color: #51cf66;
+}
+
+.language__dropdown--btn-icon {
+  font-size: 3rem;
 }
 
 .language__dropdown--content {

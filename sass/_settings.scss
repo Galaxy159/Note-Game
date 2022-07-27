@@ -15,6 +15,10 @@
       &--byn:focus {
         background-color: #2980b9;
       }
+
+      &-icon {
+        font-size: 3rem;
+      }
     }
 
     &--content {
@@ -78,11 +82,14 @@
     cursor: pointer;
 
     &--btn:hover,
-    &--byn:focus {
+    &--btn:focus {
       background-color: #51cf66;
     }
-  }
 
+    &-icon {
+      font-size: 3rem;
+    }
+  }
   &--content {
     display: none;
     position: absolute;
@@ -102,9 +109,6 @@
     a {
       text-decoration: none;
     }
-  }
-
-  &--item {
   }
 }
 
