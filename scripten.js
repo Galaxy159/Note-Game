@@ -459,10 +459,10 @@ const updateStats = function () {
   totalAnswers += 1;
   scorePerc();
   document.querySelector(".stats__tries").textContent =
-    "מספר מהלכים: " + totalAnswers;
+    "Tries: " + totalAnswers;
   document.querySelector(
     ".stats__success-percentage"
-  ).textContent = `אחוזי הצלחה: ${
+  ).textContent = `Success rate: ${
     isNaN(scorePercentage) ? "" : scorePercentage
   }`;
 };
@@ -522,7 +522,7 @@ const isMatch = function () {
   if (lockCard) {
     return;
   } else if (rangeArr.length < 2) {
-    window.alert("בחר תווים נוספים כדי לשחק");
+    window.alert("Choose more notes to play");
   } else {
     lockCard = true;
     parseInt(this.dataset.name) % 7 === randomNote % 7
@@ -562,13 +562,13 @@ const gameTimer = function () {
     if (timeLeft < 0) {
       clearInterval(gameInterval);
       window.alert(
-        `תשובות נכונות: ${scoreCorrect}` +
+        `Correct answers ${scoreCorrect}` +
           "\n" +
-          `תשובות שגויות: ${totalAnswers - scoreCorrect}` +
+          `Wrong answers: ${totalAnswers - scoreCorrect}` +
           "\n" +
-          `אחוז הצלחה: ${scorePercentage}` +
+          `Success rate ${scorePercentage}` +
           "\n" +
-          `כל הכבוד!`
+          `Good job!`
       );
       init();
     }

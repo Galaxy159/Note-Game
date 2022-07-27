@@ -106,11 +106,18 @@ body {
           transform: translateY(-20%);
 }
 
+.settings {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
 .settings__dropdown--btn {
   background-color: #3498db;
   color: white;
-  padding: 0 2rem;
   height: 5vh;
+  width: 100%;
   border: none;
   cursor: pointer;
 }
@@ -128,13 +135,90 @@ body {
   z-index: 1;
 }
 
-.show {
-  display: block;
+.settings__dropdown--content--grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: max-content max-content max-content max-content;
+      grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content;
+      grid-template-rows: max-content max-content max-content max-content;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 2rem;
 }
 
 .rangeHeader {
   margin-top: 4rem;
   font-size: 2rem;
   letter-spacing: 1px;
+  grid-column: 1 / -1;
+}
+
+.canvas-range {
+  grid-column: 1 / -1;
+}
+
+.timer-select {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.timer-select__label {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  font-size: 1.6rem;
+}
+
+.btn-restart {
+  grid-column: 1 / -1;
+  width: 50vw;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  border: none;
+  cursor: pointer;
+  background-color: #2980b9;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.language__dropdown--btn {
+  background-color: #40c057;
+  color: white;
+  height: 5vh;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.language__dropdown--btn--btn:hover, .language__dropdown--btn--byn:focus {
+  background-color: #51cf66;
+}
+
+.language__dropdown--content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 50vw;
+  height: 20vh;
+  z-index: 1;
+}
+
+.language__dropdown--list {
+  list-style: none;
+  display: -ms-grid;
+  display: grid;
+  margin-top: 2rem;
+  grid-row-gap: 2rem;
+  font-size: 1.5rem;
+}
+
+.language__dropdown--list a {
+  text-decoration: none;
+}
+
+.show {
+  display: block;
 }
 /*# sourceMappingURL=main.css.map */

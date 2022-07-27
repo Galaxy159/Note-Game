@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="he">
+<html dir="rtl" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="#" />
-    <title>זהה את התו</title>
+    <title>Identify the note</title>
   </head>
   <body>
     <div class="container">
@@ -23,26 +23,26 @@
             onclick="toggleSettingsMenu()"
             class="settings__dropdown--btn"
           >
-            הגדרות
+            Settings
           </button>
           <div id="settingsDropdown" class="settings__dropdown--content">
             <div class="settings__dropdown--content--grid">
-              <p class="rangeHeader">בחר תווים לתרגול:</p>
+              <p class="rangeHeader">Choose notes to practice</p>
               <canvas class="canvas-range"></canvas>
 
               <label for="timerSelect" class="timer-select__label"
-                >הגבלת זמן:</label
+                >Time limit:</label
               >
               <select name="times" id="timerSelect" class="timer-select">
-                <option value="0">ללא</option>
-                <option value="1">דקה</option>
-                <option value="2">2 דקות</option>
-                <option value="3">3 דקות</option>
-                <option value="4">4 דקות</option>
-                <option value="5">5 דקות</option>
+                <option value="0">None</option>
+                <option value="1">1 Minute</option>
+                <option value="2">2 Minute</option>
+                <option value="3">3 Minute</option>
+                <option value="4">4 Minute</option>
+                <option value="5">5 Minute</option>
               </select>
 
-              <button class="btn-restart">התחל משחק חדש</button>
+              <button class="btn-restart">Start a new game</button>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
             onclick="toggleLanguageMenu()"
             class="language__dropdown--btn"
           >
-            שפה
+            Language
           </button>
           <div id="languageDropdown" class="language__dropdown--content">
             <ul class="language__dropdown--list">
@@ -71,8 +71,8 @@
       </section>
 
       <div class="stats">
-        <div class="stats__success-percentage">אחוזי הצלחה:</div>
-        <div class="stats__tries">מספר מהלכים:</div>
+        <div class="stats__success-percentage">Success rate:</div>
+        <div class="stats__tries">Tries:</div>
       </div>
 
       <div class="timer">00:00</div>
@@ -81,33 +81,33 @@
 
       <section class="note-names">
         <div class="note-names__top-row">
-          <div class="note-names__note name7" data-name="7">
-            <span>רה</span>
+          <div class="note-names__note name4" data-name="4">
+            <span>La</span>
           </div>
           <div class="note-names__note name2" data-name="2">
-            <span>פה</span>
+            <span>Fa</span>
           </div>
-          <div class="note-names__note name4" data-name="4">
-            <span>לה</span>
+          <div class="note-names__note name7" data-name="7">
+            <span>Re</span>
           </div>
         </div>
         <div class="note-names__bottom-row">
-          <div class="note-names__note name6" data-name="6">
-            <span>דו</span>
-          </div>
-          <div class="note-names__note name1" data-name="1">
-            <span>מי</span>
+          <div class="note-names__note name5" data-name="5">
+            <span>Si</span>
           </div>
           <div class="note-names__note name3" data-name="3">
-            <span>סול</span>
+            <span>Sol </span>
           </div>
-          <div class="note-names__note name5" data-name="5">
-            <span>סי</span>
+          <div class="note-names__note name1" data-name="1">
+            <span>Mi</span>
+          </div>
+          <div class="note-names__note name6" data-name="6">
+            <span>Do</span>
           </div>
         </div>
       </section>
     </div>
 
-    <script src="script.js"></script>
+    <script src="scripten.js"></script>
   </body>
 </html>
