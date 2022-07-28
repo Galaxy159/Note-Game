@@ -521,7 +521,7 @@ const playNote = function (randomNote) {
 
   noteOscillator.connect(primaryGainControl);
   noteOscillator.start();
-  noteOscillator.stop(audioContext.currentTime + 0.5);
+  noteOscillator.stop(audioContext.currentTime + 0.3);
 };
 
 /////////////////////////////////////////////////////

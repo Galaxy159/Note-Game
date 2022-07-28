@@ -1,5 +1,6 @@
 "use-strict";
 import { piano } from "./wavetable.js";
+import { organ } from "./wavetable.js";
 
 let scorePercentage,
   randomNote,
@@ -521,7 +522,7 @@ const playNote = function (randomNote) {
 
   noteOscillator.connect(primaryGainControl);
   noteOscillator.start();
-  noteOscillator.stop(audioContext.currentTime + 0.5);
+  noteOscillator.stop(audioContext.currentTime + 0.3);
 };
 /////////////////////////////////////////////////////
 // Feedback functions
