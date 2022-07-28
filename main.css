@@ -106,7 +106,7 @@ body {
           transform: translateY(-20%);
 }
 
-.settings {
+.settings__btns {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -114,9 +114,6 @@ body {
 }
 
 .settings__dropdown--btn {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / 2;
   background-color: #3498db;
   color: white;
   height: 5vh;
@@ -165,9 +162,7 @@ body {
 }
 
 .timer-select {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
+  grid-column: 2 / -1;
   width: 75%;
 }
 
@@ -192,9 +187,6 @@ body {
 }
 
 .language__dropdown--btn {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / 3;
   background-color: #40c057;
   color: white;
   height: 5vh;
@@ -218,6 +210,11 @@ body {
   width: 50vw;
   height: 20vh;
   z-index: 1;
+}
+
+.language__dropdown--content--he {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .language__dropdown--list {

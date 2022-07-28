@@ -1,10 +1,11 @@
 .settings {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   &__dropdown {
     &--btn {
-      grid-column: 1 / 2;
       background-color: #3498db;
       color: white;
       height: 5vh;
@@ -53,7 +54,7 @@
 }
 
 .timer-select {
-  grid-column: 2 / 3;
+  grid-column: 2 / -1;
   width: 75%;
 
   &__label {
@@ -76,7 +77,6 @@
 
 .language__dropdown {
   &--btn {
-    grid-column: 2 / 3;
     background-color: #40c057;
     color: white;
     height: 5vh;
@@ -100,6 +100,10 @@
     width: 50vw;
     height: 20vh;
     z-index: 1;
+
+    &--he {
+      transform: translateX(-100%);
+    }
   }
 
   &--list {
