@@ -1,4 +1,6 @@
 "use-strict";
+import { piano } from "./wavetable.js";
+
 let scorePercentage,
   randomNote,
   nameCorrect,
@@ -19,7 +21,7 @@ const timer = document.querySelector(".timer");
 const canvas = document.querySelector(".canvas-game");
 
 const hamshaHeight = 0.7 * canvas.height;
-c = canvas.getContext("2d");
+const c = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = 0.5 * window.innerHeight;
@@ -50,7 +52,7 @@ const drawHamsha = function (c, canvas) {
   c.closePath();
 
   function make_clef() {
-    clef_image = new Image();
+    const clef_image = new Image();
     clef_image.src = "img/g-clef.png";
     clef_image.onload = function () {
       c.drawImage(
@@ -153,7 +155,7 @@ function Note(height) {
 // Canvas range settings
 
 const canvasRange = document.querySelector(".canvas-range");
-cRange = canvasRange.getContext("2d");
+const cRange = canvasRange.getContext("2d");
 canvasRange.width = window.innerWidth;
 canvasRange.height = 0.5 * window.innerHeight;
 const hamshaHeightRange = 0.22 * canvasRange.height;
@@ -185,7 +187,7 @@ const drawHamshaRange = function (c, canvas) {
   c.closePath();
 
   function make_clef() {
-    clef_image = new Image();
+    const clef_image = new Image();
     clef_image.src = "img/g-clef.png";
     clef_image.onload = function () {
       c.drawImage(
@@ -406,18 +408,25 @@ rangeSelect();
 toggle between hiding and showing the dropdown content */
 
 const dropdownContentID = document.getElementById("settingsDropdown");
+const dropdownContentBtn = document.querySelector(".settings__dropdown--btn");
+const dropdownLanguageBtn = document.querySelector(".language__dropdown--btn");
+const languageContentID = document.getElementById("languageDropdown");
 
+//Settings dropdown menu
 const toggleSettingsMenu = function () {
   dropdownContentID.classList.toggle("show");
 };
+dropdownContentBtn.addEventListener("click", () => {
+  toggleSettingsMenu();
+});
 
-/////////////////////////////////////////////////////
 // Language dropdown menu
-const languageContentID = document.getElementById("languageDropdown");
-
 const toggleLanguageMenu = function () {
   languageContentID.classList.toggle("show");
 };
+dropdownLanguageBtn.addEventListener("click", () => {
+  toggleLanguageMenu();
+});
 
 // Creating note array
 
@@ -495,19 +504,25 @@ const notes = [
 
 const audioContext = new AudioContext();
 const primaryGainControl = audioContext.createGain();
-primaryGainControl.gain.setValueAtTime(0.1, 0);
+primaryGainControl.gain.setValueAtTime(0.3, 0);
 primaryGainControl.connect(audioContext.destination);
+const wave = new PeriodicWave(audioContext, {
+  real: piano.real,
+  imag: piano.imag,
+});
 
 const playNote = function (randomNote) {
-  const noteOscillator = audioContext.createOscillator();
   const frequency = notes[randomNote - 1].frequency;
-  noteOscillator.type = "square";
-  noteOscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+  const noteOscillator = new OscillatorNode(audioContext, {
+    frequency: frequency,
+    type: "custom",
+    periodicWave: wave,
+  });
+
   noteOscillator.connect(primaryGainControl);
   noteOscillator.start();
   noteOscillator.stop(audioContext.currentTime + 0.5);
 };
-
 /////////////////////////////////////////////////////
 // Feedback functions
 const generateCorrectImg = function () {
