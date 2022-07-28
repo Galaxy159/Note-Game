@@ -495,13 +495,13 @@ const notes = [
 
 const audioContext = new AudioContext();
 const primaryGainControl = audioContext.createGain();
-primaryGainControl.gain.setValueAtTime(0.2, 0);
+primaryGainControl.gain.setValueAtTime(0.1, 0);
 primaryGainControl.connect(audioContext.destination);
 
 const playNote = function (randomNote) {
   const noteOscillator = audioContext.createOscillator();
   const frequency = notes[randomNote - 1].frequency;
-  noteOscillator.type = "sine";
+  noteOscillator.type = "square";
   noteOscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
   noteOscillator.connect(primaryGainControl);
   noteOscillator.start();
