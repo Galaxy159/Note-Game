@@ -562,11 +562,11 @@ const gameTimer = function () {
     if (timeLeft < 0) {
       clearInterval(gameInterval);
       window.alert(
-        `Correct answers ${scoreCorrect}` +
+        `Correct answers: ${scoreCorrect}` +
           "\n" +
           `Wrong answers: ${totalAnswers - scoreCorrect}` +
           "\n" +
-          `Success rate ${scorePercentage}` +
+          `Success rate: ${scorePercentage}` +
           "\n" +
           `Good job!`
       );
