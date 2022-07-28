@@ -526,7 +526,7 @@ const playNote = function (randomNote) {
 /////////////////////////////////////////////////////
 // Feedback functions
 const generateCorrectImg = function () {
-  correctImg = new Image();
+  const correctImg = new Image();
   correctImg.src = "img/correct.png";
   correctImg.onload = function () {
     c.drawImage(correctImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
@@ -534,7 +534,7 @@ const generateCorrectImg = function () {
 };
 
 const generateWrongImg = function () {
-  wrongImg = new Image();
+  const wrongImg = new Image();
   wrongImg.src = "img/wrong.png";
   wrongImg.onload = function () {
     c.drawImage(wrongImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
