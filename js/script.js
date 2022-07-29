@@ -8,6 +8,7 @@ let scorePercentage,
 ////////////////////////////////////////////////////////
 // EXPORTS
 
+export const rangeArr = [9, 10, 11];
 export const param = getParameterByName("p");
 export const btnRestart = document.querySelector(".btn-restart");
 export const dropdownContentBtn = document.querySelector(
@@ -73,8 +74,6 @@ const createNoteArray = function () {
   }
 };
 createNoteArray();
-
-export const rangeArr = [9, 10, 11];
 
 const randomNumArray = [];
 

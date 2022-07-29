@@ -31,6 +31,7 @@ export const languageSettings = function () {
   const englishSettings = function () {
     document.dir = "ltr";
     document.documentElement.setAttribute("lang", "en");
+    document.title = "Identify the note";
     dropdownContentBtn.style.gridColumn = "2 / 3";
     dropdownLanguageBtn.style.gridColumn = "1 / 2";
     languageDropdownContent.classList.remove("language__dropdown--content--he");
@@ -44,6 +45,7 @@ export const languageSettings = function () {
   const hebrewSettings = function () {
     document.dir = "rtl";
     languageDropdownContent.classList.add("language__dropdown--content--he");
+    document.title = "זהה את התו";
     document.documentElement.setAttribute("lang", "he");
     dropdownContentBtn.style.gridColumn = "1 / 2";
     dropdownLanguageBtn.style.gridColumn = "2 / 3";
