@@ -1,0 +1,321 @@
+"use-strict";
+
+let scorePercentage,
+  randomNote,
+  scoreCorrect = 0,
+  totalAnswers = 0;
+
+////////////////////////////////////////////////////////
+// EXPORTS
+
+export const param = getParameterByName("p");
+export const btnRestart = document.querySelector(".btn-restart");
+export const dropdownContentBtn = document.querySelector(
+  ".settings__dropdown--btn"
+);
+export const dropdownLanguageBtn = document.querySelector(
+  ".language__dropdown--btn"
+);
+export const languageDropdownContent = document.querySelector(
+  ".language__dropdown--content"
+);
+export const successRateDOM = document.querySelector(
+  ".stats__success-percentage"
+);
+export const triesDOM = document.querySelector(".stats__tries");
+
+////////////////////////////////////////////////////////////////
+// VARIABLES
+
+const incorrectSound = new Audio("incorrect.mp3");
+const names = document.querySelectorAll(".note-names__note");
+const timerSelect = document.querySelector(".timer-select");
+const timer = document.querySelector(".timer");
+const dropdownContentID = document.getElementById("settingsDropdown");
+const languageContentID = document.getElementById("languageDropdown");
+
+////////////////////////////////////////////////////////////
+// IMPORTS
+
+import { languageSettings } from "./language-settings.js";
+import { playNote } from "./audio-api.js";
+languageSettings();
+
+/////////////////////////////////////////////////////
+// Settings dropdown menu
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+
+//Settings dropdown menu
+const toggleSettingsMenu = function () {
+  dropdownContentID.classList.toggle("show");
+};
+dropdownContentBtn.addEventListener("click", () => {
+  toggleSettingsMenu();
+});
+
+// Language dropdown menu
+const toggleLanguageMenu = function () {
+  languageContentID.classList.toggle("show");
+};
+dropdownLanguageBtn.addEventListener("click", () => {
+  toggleLanguageMenu();
+});
+
+// Creating note array
+
+const noteArray = [];
+
+const createNoteArray = function () {
+  for (let i = 0; i < 21; i++) {
+    noteArray.push(new Note(i));
+  }
+};
+createNoteArray();
+
+export const rangeArr = [9, 10, 11];
+
+const randomNumArray = [];
+
+const getRandomNumberBetween = function (min, max) {
+  let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+  randomNumArray.push(rangeArr[randomNum]);
+  if (
+    randomNumArray[randomNumArray.length - 1] ===
+    randomNumArray[randomNumArray.length - 2]
+  ) {
+    randomNumArray.pop();
+    getRandomNumberBetween(0, rangeArr.length - 1);
+  } else {
+    return (randomNote = randomNumArray[randomNumArray.length - 1] + 1);
+  }
+};
+
+//////////////////////////////////////////
+///////////////////////////////////////////////////////
+// Stats functions
+const scorePerc = function () {
+  scorePercentage = ((scoreCorrect / totalAnswers) * 100).toFixed(1);
+};
+
+const updateStats = function () {
+  totalAnswers += 1;
+  scorePerc();
+
+  const statsHe = function () {
+    triesDOM.textContent = "מספר מהלכים: " + totalAnswers;
+    successRateDOM.textContent = `אחוזי הצלחה: ${
+      isNaN(scorePercentage) ? "" : scorePercentage
+    } %`;
+  };
+
+  const statsEn = function () {
+    triesDOM.textContent = "Tries: " + totalAnswers;
+    successRateDOM.textContent = `Success Rate: ${
+      isNaN(scorePercentage) ? "" : scorePercentage
+    } %`;
+  };
+  switch (param) {
+    case "en-cde":
+      statsEn();
+      break;
+    case "en-doremi":
+      statsEn();
+      break;
+    case "he":
+      statsHe();
+      break;
+    default:
+      statsHe();
+      break;
+  }
+};
+
+/////////////////////////////////////////////////////
+// Feedback functions
+const generateCorrectImg = function () {
+  const correctImg = new Image();
+  correctImg.src = "img/correct.png";
+  correctImg.onload = function () {
+    c.drawImage(correctImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+  };
+};
+
+const generateWrongImg = function () {
+  const wrongImg = new Image();
+  wrongImg.src = "img/wrong.png";
+  wrongImg.onload = function () {
+    c.drawImage(wrongImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+  };
+};
+
+const feedbackCorrect = function () {
+  playNote(randomNote);
+  generateCorrectImg();
+  setTimeout(() => {}, 500);
+};
+
+const feedbackWrong = function () {
+  incorrectSound.play();
+  window.navigator.vibrate(500);
+  generateWrongImg();
+};
+
+////////////////////////////////////////////////////
+// Check match functions
+const correctAnswer = function () {
+  scoreCorrect += 1;
+  feedbackCorrect();
+};
+
+const wrongAnswer = function () {
+  feedbackWrong();
+};
+
+function randomizeNote() {
+  getRandomNumberBetween(0, rangeArr.length - 1);
+  c.clearRect(0.16 * canvas.width, 0, canvas.width, canvas.height);
+  // c.clearRect(0, 0, canvas.width, canvas.height);
+  drawHamsha(c, canvas);
+  noteArray[randomNote - 1].drawNote();
+}
+
+let lockCard = false;
+
+const isMatch = function () {
+  const alertHe = function () {
+    window.alert("בחר תווים נוספים כדי לשחק");
+  };
+  const alertEn = function () {
+    window.alert("Choose more notes to play");
+  };
+
+  if (lockCard) {
+    return;
+  } else if (rangeArr.length < 2) {
+    switch (param) {
+      case "en-cde":
+        alertEn();
+        break;
+      case "en-doremi":
+        alertEn();
+        break;
+      case "he":
+        alertHe();
+        break;
+      default:
+        alertHe();
+    }
+  } else {
+    lockCard = true;
+    parseInt(this.dataset.name) % 7 === randomNote % 7
+      ? correctAnswer()
+      : wrongAnswer();
+
+    updateStats();
+    randomizeNote();
+    setTimeout(() => {
+      c.clearRect(
+        0.7 * canvas.width,
+        0.04 * canvas.height,
+        0.7 * canvas.width + 100,
+        0.04 * canvas.height + 77
+      );
+      lockCard = false;
+    }, 500);
+  }
+};
+
+//////////////////////////////////////////////////
+// TIMER
+let timeLeft = 0;
+let gameInterval;
+
+const timerUI = function () {
+  timer.textContent =
+    (timeLeft >= 60 ? "0" + parseInt(timeLeft / 60) : "00").toString() +
+    ":" +
+    (timeLeft % 60 >= 10 ? timeLeft % 60 : "0" + (timeLeft % 60)).toString();
+  timeLeft -= 1;
+};
+
+const gameTimer = function () {
+  const alertEn = function () {
+    window.alert(
+      `Correct answers: ${scoreCorrect}` +
+        "\n" +
+        `Wrong answers: ${totalAnswers - scoreCorrect}` +
+        "\n" +
+        `Success rate: ${scorePercentage} %` +
+        "\n" +
+        `Good job!`
+    );
+  };
+  const alertHe = function () {
+    window.alert(
+      `תשובות נכונות: ${scoreCorrect}` +
+        "\n" +
+        `תשובות שגויות: ${totalAnswers - scoreCorrect}` +
+        "\n" +
+        `אחוז הצלחה: ${scorePercentage} %` +
+        "\n" +
+        `כל הכבוד!`
+    );
+  };
+  timerUI();
+  gameInterval = setInterval(function () {
+    if (timeLeft < 0) {
+      clearInterval(gameInterval);
+      switch (param) {
+        case "en-cde":
+          alertEn();
+          break;
+        case "en-doremi":
+          alertEn();
+          break;
+        case "he":
+          alertHe();
+          break;
+        default:
+          alertHe();
+      }
+
+      init();
+    }
+    timerUI();
+  }, 1000);
+};
+
+const startTimer = function () {
+  clearInterval(gameInterval);
+  timeLeft = timerSelect.value * 60;
+  gameTimer();
+};
+
+//////////////////////////////////////////////////
+// init function
+const init = function () {
+  scoreCorrect = 0;
+  totalAnswers = -1;
+  timeLeft = 0;
+  randomizeNote();
+  updateStats();
+};
+init();
+
+///////////////////////////////////////////////////
+// Handlers
+
+names.forEach((name) => name.addEventListener("click", isMatch));
+
+btnRestart.addEventListener("click", function () {
+  if (timerSelect.value > 0) {
+    init();
+    toggleSettingsMenu();
+    startTimer();
+  } else {
+    init();
+    toggleSettingsMenu();
+  }
+});

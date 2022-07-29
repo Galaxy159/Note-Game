@@ -6,6 +6,8 @@
 
   &__dropdown {
     &--btn {
+      grid-column: 1 / 2;
+
       background-color: #3498db;
       color: white;
       height: 5vh;
@@ -77,6 +79,9 @@
 
 .language__dropdown {
   &--btn {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
     background-color: #40c057;
     color: white;
     height: 5vh;

@@ -43,12 +43,12 @@
                 >הגבלת זמן:</label
               >
               <select name="times" id="timerSelect" class="timer-select">
-                <option value="0">ללא</option>
-                <option value="1">דקה</option>
-                <option value="2">2 דקות</option>
-                <option value="3">3 דקות</option>
-                <option value="4">4 דקות</option>
-                <option value="5">5 דקות</option>
+                <option value="0">00:00</option>
+                <option value="1">01:00</option>
+                <option value="2">02:00</option>
+                <option value="3">03:00</option>
+                <option value="4">04:00</option>
+                <option value="5">05:00</option>
               </select>
 
               <button class="btn-restart">התחל משחק חדש</button>
@@ -57,19 +57,16 @@
         </div>
 
         <div class="language__dropdown">
-          <div
-            id="languageDropdown"
-            class="language__dropdown--content language__dropdown--content--he"
-          >
+          <div id="languageDropdown" class="language__dropdown--content">
             <ul class="language__dropdown--list">
               <li class="language__dropdown--item">
-                <a href="index.html">עברית</a>
+                <a href="index.html?p=he">עברית</a>
               </li>
               <li class="language__dropdown--item">
-                <a href="english-abc.html">English (C, D, E...)</a>
+                <a href="index.html?p=en-cde">English (C, D, E...)</a>
               </li>
               <li class="language__dropdown--item">
-                <a href="english-doremi.html">English (Do, Re, Mi...)</a>
+                <a href="index.html?p=en-doremi">English (Do, Re, Mi...)</a>
               </li>
             </ul>
           </div>
@@ -114,7 +111,12 @@
       </section>
     </div>
 
-    <script src="script.js" type="module"></script>
+    <script src="js/script.js" type="module"></script>
+    <script src="js/main-canvas.js"></script>
+    <script src="js/range-canvas.js" type="module"></script>
+    <script src="js/language-settings.js" type="module"></script>
+    <script type="text/javascript" src="js/helpers.js"></script>
+    <script src="js/audio-api.js" type="module"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
