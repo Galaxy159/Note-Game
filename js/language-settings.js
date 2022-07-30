@@ -52,7 +52,7 @@ export const languageSettings = function () {
     successRateDOM.innerText = "אחוזי הצלחה: ";
     triesDOM.innerText = "מספר מהלכים: ";
     changeNoteNames(notesHE);
-    rangeHeader.innerText = "בחר תווים לתרגול:";
+    rangeHeader.innerText = "בחר/י תווים לתרגול:";
     timerSelectLabel.innerText = "הגבלת זמן:";
     btnRestart.innerText = "התחל משחק חדש";
   };

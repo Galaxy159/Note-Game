@@ -103,15 +103,15 @@ const updateStats = function () {
   scorePerc();
 
   const statsHe = function () {
-    triesDOM.textContent = "מספר מהלכים: " + totalAnswers;
-    successRateDOM.textContent = `אחוזי הצלחה: ${
+    triesDOM.textContent = "מהלכים: " + totalAnswers;
+    successRateDOM.textContent = `אחוזי הצלחה: % ${
       isNaN(scorePercentage) ? "" : scorePercentage
-    } %`;
+    }`;
   };
 
   const statsEn = function () {
-    triesDOM.textContent = "Tries: " + totalAnswers;
-    successRateDOM.textContent = `Success Rate: ${
+    triesDOM.textContent = "Moves: " + totalAnswers;
+    successRateDOM.textContent = `Success rate: ${
       isNaN(scorePercentage) ? "" : scorePercentage
     } %`;
   };
@@ -184,7 +184,7 @@ let lockCard = false;
 
 const isMatch = function () {
   const alertHe = function () {
-    window.alert("בחר תווים נוספים כדי לשחק");
+    window.alert("בחר/י תווים נוספים כדי לשחק");
   };
   const alertEn = function () {
     window.alert("Choose more notes to play");

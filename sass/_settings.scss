@@ -2,6 +2,7 @@
   &__btns {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(min-content, 5vh);
   }
 
   &__dropdown {
@@ -10,7 +11,7 @@
 
       background-color: #3498db;
       color: white;
-      height: 5vh;
+      height: 100%;
       width: 100%;
       border: none;
       cursor: pointer;
@@ -45,7 +46,8 @@
 
 .rangeHeader {
   margin-top: 4rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
   letter-spacing: 1px;
   grid-column: 1 / -1;
 }
@@ -61,7 +63,8 @@
 
   &__label {
     grid-column: 1 / 2;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    font-weight: 500;
   }
 }
 
@@ -75,6 +78,7 @@
   color: #fff;
   padding: 1rem;
   border-radius: 2rem;
+  font-size: 1.6rem;
 }
 
 .language__dropdown {
@@ -84,7 +88,7 @@
 
     background-color: #40c057;
     color: white;
-    height: 5vh;
+    height: 100%;
     width: 100%;
     border: none;
     cursor: pointer;

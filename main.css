@@ -14,7 +14,7 @@ html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 62.5%;
-  font-family: "Secular One", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 body {
@@ -45,7 +45,8 @@ body {
 
 .stats {
   margin: 2rem 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 500;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,6 +85,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 2rem;
+  font-weight: 500;
   margin-bottom: 2rem;
   height: 6rem;
   width: 6rem;
@@ -158,7 +160,8 @@ body {
 
 .rangeHeader {
   margin-top: 4rem;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 500;
   letter-spacing: 1px;
   grid-column: 1 / -1;
 }
@@ -176,7 +179,8 @@ body {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1 / 2;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
 .btn-restart {
@@ -190,6 +194,7 @@ body {
   color: #fff;
   padding: 1rem;
   border-radius: 2rem;
+  font-size: 1.6rem;
 }
 
 .language__dropdown--btn {
