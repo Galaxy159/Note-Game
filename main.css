@@ -110,6 +110,10 @@ body {
           transform: translateY(-20%);
 }
 
+.copyright {
+  margin-top: 1rem;
+}
+
 .settings__btns {
   display: -ms-grid;
   display: grid;
