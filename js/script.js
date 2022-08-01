@@ -156,9 +156,12 @@ const generateWrongImg = function () {
 };
 
 const feedbackCorrect = function () {
-  pianoNotesArr[randomNote - 1].play();
   generateCorrectImg();
-  setTimeout(() => {}, 500);
+  pianoNotesArr[randomNote - 1].play();
+  setTimeout(() => {
+    pianoNotesArr[randomNumArray[randomNumArray.length - 2]].pause();
+    pianoNotesArr[randomNumArray[randomNumArray.length - 2]].currentTime = 0;
+  }, 500);
 };
 
 const feedbackCorrectPitch = function () {
