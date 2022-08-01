@@ -45,5 +45,3 @@ export const pianoNotesArr = [
   c5,
   d5,
 ];
-
-console.log(pianoNotesArr);
