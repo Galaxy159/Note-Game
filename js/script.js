@@ -28,8 +28,8 @@ export const triesDOM = document.querySelector(".stats__tries");
 ////////////////////////////////////////////////////////////////
 // VARIABLES
 
-const incorrectSound = new Audio("incorrect.mp3");
-const correctSound = new Audio("correct.mp3");
+const incorrectSound = new Audio("../mp3/incorrect.mp3");
+const correctSound = new Audio("../mp3/correct.mp3");
 const names = document.querySelectorAll(".note-names__note");
 const timerSelect = document.querySelector(".timer-select");
 const timer = document.querySelector(".timer");
@@ -45,6 +45,7 @@ const notesFrequency = [
 
 import { languageSettings } from "./language-settings.js";
 import { playNote } from "./audio-api.js";
+import { pianoNotesArr } from "./piano-mp3.js";
 languageSettings();
 
 /////////////////////////////////////////////////////
@@ -155,7 +156,7 @@ const generateWrongImg = function () {
 };
 
 const feedbackCorrect = function () {
-  playNote(randomNote);
+  pianoNotesArr[randomNote - 1].play();
   generateCorrectImg();
   setTimeout(() => {}, 500);
 };
