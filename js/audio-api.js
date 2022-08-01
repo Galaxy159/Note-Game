@@ -36,14 +36,14 @@ export const playNote = function (randomNote) {
   primaryGainControl.gain.setValueAtTime(0.3, 0);
   primaryGainControl.connect(audioContext.destination);
   const wave = new PeriodicWave(audioContext, {
-    real: organ.real,
-    imag: organ.imag,
+    real: piano.real,
+    imag: piano.imag,
   });
   const frequency = notes[randomNote - 1].frequency;
   const noteOscillator = new OscillatorNode(audioContext, {
     frequency: frequency,
-    type: "sine",
-    // periodicWave: wave,
+    type: "custome",
+    periodicWave: wave,
   });
 
   noteOscillator.connect(primaryGainControl);
