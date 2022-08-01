@@ -29,6 +29,7 @@ export const triesDOM = document.querySelector(".stats__tries");
 // VARIABLES
 
 const incorrectSound = new Audio("incorrect.mp3");
+const correctSound = new Audio("correct.mp3");
 const names = document.querySelectorAll(".note-names__note");
 const timerSelect = document.querySelector(".timer-select");
 const timer = document.querySelector(".timer");
@@ -159,6 +160,17 @@ const feedbackCorrect = function () {
   setTimeout(() => {}, 500);
 };
 
+const feedbackCorrectPitch = function () {
+  correctSound.play();
+  generateCorrectImg();
+  setTimeout(() => {}, 500);
+};
+
+const correctAnswerPitch = function () {
+  feedbackCorrectPitch();
+  scoreCorrect += 1;
+};
+
 const feedbackWrong = function () {
   incorrectSound.play();
   window.navigator.vibrate(500);
@@ -264,7 +276,7 @@ export const isMatchPitch = function (pitchValue) {
         pitchValue > notesFrequency[randomNote - 1] - 3 &&
         pitchValue < notesFrequency[randomNote - 1] + 3
       ) {
-        correctAnswer();
+        correctAnswerPitch();
       } else {
         wrongAnswer();
       }
