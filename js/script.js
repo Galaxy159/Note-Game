@@ -44,7 +44,6 @@ const notesFrequency = [
 // IMPORTS
 
 import { languageSettings } from "./language-settings.js";
-import { playNote } from "./audio-api.js";
 import { pianoNotesArr } from "./piano-mp3.js";
 languageSettings();
 
