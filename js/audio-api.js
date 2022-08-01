@@ -42,8 +42,8 @@ export const playNote = function (randomNote) {
   const frequency = notes[randomNote - 1].frequency;
   const noteOscillator = new OscillatorNode(audioContext, {
     frequency: frequency,
-    type: "custom",
-    periodicWave: wave,
+    type: "sine",
+    // periodicWave: wave,
   });
 
   noteOscillator.connect(primaryGainControl);
