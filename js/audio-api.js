@@ -28,16 +28,17 @@ const notes = [
   { name: "D", frequency: 587 },
 ];
 
-const audioContext = new AudioContext();
-const primaryGainControl = audioContext.createGain();
-primaryGainControl.gain.setValueAtTime(0.3, 0);
-primaryGainControl.connect(audioContext.destination);
-const wave = new PeriodicWave(audioContext, {
-  real: piano.real,
-  imag: piano.imag,
-});
+let audioContext;
 
 export const playNote = function (randomNote) {
+  audioContext = new AudioContext();
+  const primaryGainControl = audioContext.createGain();
+  primaryGainControl.gain.setValueAtTime(0.3, 0);
+  primaryGainControl.connect(audioContext.destination);
+  const wave = new PeriodicWave(audioContext, {
+    real: piano.real,
+    imag: piano.imag,
+  });
   const frequency = notes[randomNote - 1].frequency;
   const noteOscillator = new OscillatorNode(audioContext, {
     frequency: frequency,

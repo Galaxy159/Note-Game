@@ -1,0 +1,10 @@
+.tuner {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  &__label {
+    font-size: 1.6rem;
+  }
+}

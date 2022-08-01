@@ -34,6 +34,10 @@ const timerSelect = document.querySelector(".timer-select");
 const timer = document.querySelector(".timer");
 const dropdownContentID = document.getElementById("settingsDropdown");
 const languageContentID = document.getElementById("languageDropdown");
+const notesFrequency = [
+  82, 87, 98, 110, 123, 131, 147, 165, 175, 196, 220, 247, 262, 294, 330, 349,
+  392, 440, 494, 523, 587,
+];
 
 ////////////////////////////////////////////////////////////
 // IMPORTS
@@ -223,6 +227,64 @@ const isMatch = function () {
       );
       lockCard = false;
     }, 500);
+  }
+};
+
+export const isMatchPitch = function (pitchValue) {
+  const alertHe = function () {
+    window.alert("בחר/י תווים נוספים כדי לשחק");
+  };
+  const alertEn = function () {
+    window.alert("Choose more notes to play");
+  };
+
+  if (
+    pitchValue > notesFrequency[randomNote - 1] - 3 &&
+    pitchValue < notesFrequency[randomNote - 1] + 3
+  ) {
+    if (lockCard) {
+      return;
+    } else if (rangeArr.length < 2) {
+      switch (param) {
+        case "en-cde":
+          alertEn();
+          break;
+        case "en-doremi":
+          alertEn();
+          break;
+        case "he":
+          alertHe();
+          break;
+        default:
+          alertHe();
+      }
+    } else {
+      lockCard = true;
+      if (
+        pitchValue > notesFrequency[randomNote - 1] - 3 &&
+        pitchValue < notesFrequency[randomNote - 1] + 3
+      ) {
+        correctAnswer();
+      } else {
+        wrongAnswer();
+      }
+      console.log(notesFrequency[randomNote - 1]);
+
+      updateStats();
+      randomizeNote();
+
+      setTimeout(() => {
+        c.clearRect(
+          0.7 * canvas.width,
+          0.04 * canvas.height,
+          0.7 * canvas.width + 100,
+          0.04 * canvas.height + 77
+        );
+        lockCard = false;
+      }, 500);
+    }
+  } else {
+    return;
   }
 };
 

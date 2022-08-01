@@ -111,6 +111,14 @@
           </div>
         </div>
       </section>
+      <section class="tuner">
+        <div class="tuner__label">מצב נגינה:</div>
+        <label class="switch">
+          <input type="checkbox" name="initCheckbox" />
+          <span class="slider"></span>
+        </label>
+        <p id="note" style="font-size: 1.6rem">-1 Hz</p>
+      </section>
       <section class="copyright">
         <p class="copyright__text">
           Copyright 2022 by Asaf Braun. All rights reserved &copy;
@@ -119,6 +127,8 @@
     </div>
 
     <script src="js/script.js" type="module"></script>
+    <script src="js/pitch-detector.js" type="module"></script>
+
     <script src="js/main-canvas.js"></script>
     <script src="js/range-canvas.js" type="module"></script>
     <script src="js/language-settings.js" type="module"></script>
