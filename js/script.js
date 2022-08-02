@@ -47,6 +47,15 @@ import { languageSettings } from "./language-settings.js";
 import { pianoNotesArr } from "./piano-mp3.js";
 languageSettings();
 
+//////////////////////////////////////
+// HIDE ADDRESS BAR
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    // This hides the address bar:
+    window.scrollTo(0, 1);
+  }, 0);
+});
+
 /////////////////////////////////////////////////////
 // Settings dropdown menu
 
