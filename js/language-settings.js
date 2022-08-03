@@ -18,6 +18,8 @@ export const languageSettings = function () {
   const notesEnDOREMI = ["Re", "Fa", "La", "Do", "Mi", "Sol", "Si"];
   const rangeHeader = document.querySelector(".rangeHeader");
   const timerSelectLabel = document.querySelector(".timer-select__label");
+  const tunerLabel = document.querySelector(".tuner__label");
+  const copyright = document.querySelector(".copyright__text");
 
   const changeNoteNames = function (noteNameArr) {
     const currentNamesArr = [...document.querySelectorAll(".note-names__note")];
@@ -40,6 +42,9 @@ export const languageSettings = function () {
     rangeHeader.innerText = "Choose notes to practice:";
     timerSelectLabel.innerText = "Time limit:";
     btnRestart.innerText = "Start a new game";
+    tunerLabel.innerText = "Play mode:";
+    copyright.innerHTML =
+      "&copy; Copyright 2022 by Asaf Braun. All rights reserved";
   };
 
   const hebrewSettings = function () {
@@ -55,6 +60,9 @@ export const languageSettings = function () {
     rangeHeader.innerText = "בחר/י תווים לתרגול:";
     timerSelectLabel.innerText = "הגבלת זמן:";
     btnRestart.innerText = "התחל משחק חדש";
+    tunerLabel.innerText = "מצב נגינה:";
+    copyright.innerHTML =
+      "Copyright 2022 by Asaf Braun. All rights reserved &copy;";
   };
 
   switch (param) {
