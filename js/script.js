@@ -206,7 +206,6 @@ const wrongAnswer = function () {
 function randomizeNote() {
   getRandomNumberBetween(0, rangeArr.length - 1);
   noteCTX.clearRect(0, 0, canvas.width, canvas.height);
-  // c.clearRect(0, 0, canvas.width, canvas.height);
   drawHamsha(c, canvas);
   noteArray[randomNote - 1].drawNote();
 }
