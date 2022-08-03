@@ -27,10 +27,6 @@ body {
           user-select: none;
 }
 
-.canvas {
-  margin-bottom: 2rem;
-}
-
 .switch {
   position: relative;
   display: inline-block;
@@ -85,13 +81,8 @@ input:checked + .slider:before {
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
   max-width: 120rem;
   margin: 0 auto;
 }
@@ -112,6 +103,27 @@ input:checked + .slider:before {
 
 .timer {
   font-size: 4rem;
+}
+
+.canvas-game__layer1 {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.canvas-game__layer2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.canvas-game__layer3 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .note-names__top-row {
@@ -199,7 +211,7 @@ input:checked + .slider:before {
   background-color: #f1f1f1;
   width: 100vw;
   height: 95vh;
-  z-index: 1;
+  z-index: 2;
 }
 
 .settings__dropdown--content--grid {

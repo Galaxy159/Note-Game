@@ -1,7 +1,7 @@
 /////////////////////////////////////
 // Drawing hamsha on canvas
 
-const canvas = document.querySelector(".canvas-game");
+const canvas = document.getElementById("layer1");
 
 const hamshaHeight = 0.7 * canvas.height;
 const c = canvas.getContext("2d");
@@ -53,23 +53,6 @@ drawHamsha(c, canvas);
 
 /////////////////////////////////////////////////
 // CREATING NOTE HEIGHT ARRAY AND UI
-
-// Ellipse function
-
-const ellipse = function (height) {
-  c.beginPath();
-  c.ellipse(
-    0.5 * canvas.width,
-    noteHeightArray[height],
-    hamshaHeight / 8,
-    23,
-    Math.PI / 2.5,
-    0,
-    2 * Math.PI
-  );
-  c.fill();
-  c.closePath();
-};
 
 // Kav ezer function:
 
@@ -133,3 +116,38 @@ function Note(height) {
     }
   };
 }
+
+////////////////////////////////////////////
+// Note elipse layer
+
+const canvasNote = document.getElementById("layer2");
+const noteCTX = canvasNote.getContext("2d");
+
+canvasNote.width = window.innerWidth;
+canvasNote.height = 0.5 * window.innerHeight;
+
+// Ellipse function
+
+const ellipse = function (height) {
+  noteCTX.beginPath();
+  noteCTX.ellipse(
+    0.5 * canvas.width,
+    noteHeightArray[height],
+    hamshaHeight / 8,
+    23,
+    Math.PI / 2.5,
+    0,
+    2 * Math.PI
+  );
+  noteCTX.fill();
+  noteCTX.closePath();
+};
+
+////////////////////////////////////////////
+// feedback layer
+
+const canvasFeedback = document.getElementById("layer3");
+const feedbackCTX = canvasNote.getContext("2d");
+
+canvasFeedback.width = window.innerWidth;
+canvasFeedback.height = 0.5 * window.innerHeight;

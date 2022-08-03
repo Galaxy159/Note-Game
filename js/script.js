@@ -142,7 +142,13 @@ const generateCorrectImg = function () {
   const correctImg = new Image();
   correctImg.src = "img/correct.png";
   correctImg.onload = function () {
-    c.drawImage(correctImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+    feedbackCTX.drawImage(
+      correctImg,
+      0.7 * canvas.width,
+      0.04 * canvas.height,
+      100,
+      100
+    );
   };
 };
 
@@ -150,7 +156,13 @@ const generateWrongImg = function () {
   const wrongImg = new Image();
   wrongImg.src = "img/wrong.png";
   wrongImg.onload = function () {
-    c.drawImage(wrongImg, 0.7 * canvas.width, 0.04 * canvas.height, 100, 100);
+    feedbackCTX.drawImage(
+      wrongImg,
+      0.7 * canvas.width,
+      0.04 * canvas.height,
+      100,
+      100
+    );
   };
 };
 
@@ -193,7 +205,7 @@ const wrongAnswer = function () {
 
 function randomizeNote() {
   getRandomNumberBetween(0, rangeArr.length - 1);
-  c.clearRect(0.16 * canvas.width, 0, canvas.width, canvas.height);
+  noteCTX.clearRect(0, 0, canvas.width, canvas.height);
   // c.clearRect(0, 0, canvas.width, canvas.height);
   drawHamsha(c, canvas);
   noteArray[randomNote - 1].drawNote();
@@ -234,7 +246,7 @@ const isMatch = function () {
     updateStats();
     randomizeNote();
     setTimeout(() => {
-      c.clearRect(
+      feedbackCTX.clearRect(
         0.7 * canvas.width,
         0.04 * canvas.height,
         0.7 * canvas.width + 100,
@@ -289,7 +301,7 @@ export const isMatchPitch = function (pitchValue) {
       randomizeNote();
 
       setTimeout(() => {
-        c.clearRect(
+        feedbackCTX.clearRect(
           0.7 * canvas.width,
           0.04 * canvas.height,
           0.7 * canvas.width + 100,

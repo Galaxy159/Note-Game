@@ -1,6 +1,5 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   max-width: 120rem;
   margin: 0 auto;
 }
@@ -17,6 +16,28 @@
 
 .timer {
   font-size: 4rem;
+}
+
+.canvas-game {
+  &__layer1 {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+  &__layer2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  &__layer3 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
 }
 
 .note-names {
