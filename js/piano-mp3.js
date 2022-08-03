@@ -45,3 +45,14 @@ export const pianoNotesArr = [
   c5,
   d5,
 ];
+
+const audioCtx = new AudioContext();
+
+for (let i = 0; i < pianoNotesArr.length; i++) {
+  const source = audioCtx.createMediaElementSource(pianoNotesArr[i]);
+  const gainNode = audioCtx.createGain();
+  gainNode.gain.value = 3;
+  source.connect(gainNode);
+
+  gainNode.connect(audioCtx.destination);
+}
