@@ -106,6 +106,7 @@ input:checked + .slider:before {
 }
 
 .canvas-game__layer1 {
+  max-width: 120rem;
   position: relative;
   left: 0;
   top: 0;
@@ -113,6 +114,7 @@ input:checked + .slider:before {
 }
 
 .canvas-game__layer2 {
+  max-width: 120rem;
   position: absolute;
   left: 0;
   top: 0;
@@ -120,6 +122,7 @@ input:checked + .slider:before {
 }
 
 .canvas-game__layer3 {
+  max-width: 120rem;
   position: absolute;
   left: 0;
   top: 0;
@@ -206,6 +209,7 @@ input:checked + .slider:before {
 }
 
 .settings__dropdown--content {
+  max-width: 120rem;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -234,6 +238,7 @@ input:checked + .slider:before {
 }
 
 .canvas-range {
+  max-width: 120rem;
   grid-column: 1 / -1;
 }
 
