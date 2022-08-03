@@ -47,11 +47,6 @@ import { languageSettings } from "./language-settings.js";
 import { pianoNotesArr } from "./piano-mp3.js";
 languageSettings();
 
-///////////////////////////////////////////////////////
-// sound volume
-incorrectSound.volume = 0.4;
-correctSound.volume = 0.4;
-
 /////////////////////////////////////////////////////
 // Settings dropdown menu
 
