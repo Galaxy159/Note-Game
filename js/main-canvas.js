@@ -42,7 +42,7 @@ const drawHamsha = function (c, canvas) {
         clef_image,
         -20,
         0.58 * hamshaHeight,
-        100,
+        0.65 * canvas.height * 0.5859375,
         0.65 * canvas.height
       );
     };
