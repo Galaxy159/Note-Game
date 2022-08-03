@@ -20,12 +20,16 @@
 
 .canvas-game {
   &__layer1 {
+    max-width: 120rem;
+
     position: relative;
     left: 0;
     top: 0;
     z-index: 0;
   }
   &__layer2 {
+    max-width: 120rem;
+
     position: absolute;
     left: 0;
     top: 0;
@@ -33,6 +37,8 @@
   }
 
   &__layer3 {
+    max-width: 120rem;
+
     position: absolute;
     left: 0;
     top: 0;
