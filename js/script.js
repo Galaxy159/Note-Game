@@ -462,16 +462,26 @@ names.forEach((name) =>
   name.addEventListener("click", () => {
     if (!firstClick) {
       firstClick = true;
-      const audioCtx = new AudioContext();
+      const audioCtxPiano = new AudioContext();
+      const gainNodePiano = audioCtxPiano.createGain();
 
       for (let i = 0; i < pianoNotesArr.length; i++) {
-        const source = audioCtx.createMediaElementSource(pianoNotesArr[i]);
-        const gainNode = audioCtx.createGain();
-        gainNode.gain.value = 3;
-        source.connect(gainNode);
-
-        gainNode.connect(audioCtx.destination);
+        const source = audioCtxPiano.createMediaElementSource(pianoNotesArr[i]);
+        gainNodePiano.gain.value = 3;
+        source.connect(gainNodePiano);
+        gainNodePiano.connect(audioCtxPiano.destination);
       }
+
+      const audioCtxFeedback = new AudioContext();
+      const gainNodeFeedback = audioCtxFeedback.createGain();
+      const sourceCorrect =
+        audioCtxFeedback.createMediaElementSource(correctSound);
+      const sourceIncorrect =
+        audioCtxFeedback.createMediaElementSource(incorrectSound);
+      gainNodeFeedback.gain.value = 1;
+      sourceCorrect.connect(gainNodeFeedback);
+      sourceIncorrect.connect(gainNodeFeedback);
+      gainNodeFeedback.connect(audioCtxFeedback.destination);
     } else {
       return;
     }
