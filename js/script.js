@@ -253,7 +253,7 @@ const isMatch = function () {
         0.04 * canvas.height + 77
       );
       lockCard = false;
-    }, 500);
+    }, 450);
   }
 };
 
@@ -308,7 +308,7 @@ export const isMatchPitch = function (pitchValue) {
           0.04 * canvas.height + 77
         );
         lockCard = false;
-      }, 500);
+      }, 450);
     }
   } else {
     return;
