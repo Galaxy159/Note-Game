@@ -238,7 +238,6 @@ input:checked + .slider:before {
 }
 
 .canvas-range {
-  max-width: 120rem;
   grid-column: 1 / -1;
 }
 
