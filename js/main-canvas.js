@@ -57,12 +57,12 @@ drawHamsha(c, canvas);
 // Kav ezer function:
 
 const kavEzer = function (kavEzerHeight) {
-  c.beginPath();
-  c.lineWidth = 2;
-  c.moveTo(0.5 * canvas.width - 46, kavEzerHeight);
-  c.lineTo(0.5 * canvas.width + 46, kavEzerHeight);
-  c.stroke();
-  c.closePath();
+  noteCTX.beginPath();
+  noteCTX.lineWidth = 2;
+  noteCTX.moveTo(0.5 * canvas.width - 46, kavEzerHeight);
+  noteCTX.lineTo(0.5 * canvas.width + 46, kavEzerHeight);
+  noteCTX.stroke();
+  noteCTX.closePath();
 };
 
 // Note Class:
