@@ -44,7 +44,7 @@ export const languageSettings = function () {
     btnRestart.innerText = "Start a new game";
     tunerLabel.innerText = "Play mode:";
     copyright.innerHTML =
-      "&copy; Copyright 2022 by Asaf Braun. All rights reserved";
+      "&copy; Copyright 2022 by Asaf Braun. All rights reserved.";
   };
 
   const hebrewSettings = function () {
