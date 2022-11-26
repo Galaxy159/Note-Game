@@ -43,8 +43,7 @@ export const languageSettings = function () {
     timerSelectLabel.innerText = "Time limit:";
     btnRestart.innerText = "Start a new game";
     tunerLabel.innerText = "Play mode:";
-    copyright.innerHTML =
-      "&copy; Copyright 2022 by Asaf Braun. All rights reserved";
+    copyright.innerHTML = `&copy; Copyright 2022 by <a href="https://www.braunguitar.net" target="_blank" rel="noreferrer noopener">Asaf Braun - Guitar Teacher.</a> All rights reserved`;
   };
 
   const hebrewSettings = function () {
@@ -61,8 +60,7 @@ export const languageSettings = function () {
     timerSelectLabel.innerText = "הגבלת זמן:";
     btnRestart.innerText = "התחל משחק חדש";
     tunerLabel.innerText = "מצב נגינה:";
-    copyright.innerHTML =
-      "Copyright 2022 by Asaf Braun. All rights reserved &copy;";
+    copyright.innerHTML = `&copy; כל הזכויות שמורות ל  <a href="https://www.braunguitar.net" target="_blank" rel="noreferrer noopener">אסף בראון - מורה לגיטרה</a>`;
   };
 
   switch (param) {
