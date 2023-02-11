@@ -20,7 +20,6 @@ body {
   text-align: center;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -150,7 +149,6 @@ input:checked + .slider:before {
 .settings__btns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: minmax(-webkit-min-content, 5vh);
   grid-template-rows: minmax(min-content, 5vh);
 }
 .settings__dropdown--btn {
@@ -179,7 +177,6 @@ input:checked + .slider:before {
 }
 .settings__dropdown--content--grid {
   display: grid;
-  grid-template-rows: -webkit-max-content -webkit-max-content -webkit-max-content -webkit-max-content;
   grid-template-rows: max-content max-content max-content max-content;
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 2rem;
